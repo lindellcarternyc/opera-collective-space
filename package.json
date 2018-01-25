@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "next"
+    "dev": "next",
+    "lint": "eslint ./components/layout.js"
   },
   "keywords": [],
   "author": "",
@@ -16,5 +17,14 @@
     "react-dom": "^16.2.0",
     "semantic-ui-css": "^2.2.12",
     "semantic-ui-react": "^0.77.2"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-class-property": "^1.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.6.0"
   }
 }
