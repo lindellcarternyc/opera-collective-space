@@ -4,65 +4,104 @@ import PropTypes from 'prop-types'
 
 import Layout from '../components/layout'
 import { Header, Form, Input } from 'semantic-ui-react'
-import FormField from 'semantic-ui-react/dist/commonjs/collections/Form/FormField';
+
+import { getUsers, addUser } from '../data/users'
 
 class Signup extends Component {
   state = {
-    firstName: '',
-    lastName: '',
-    phoneNumber: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
+    fields: {
+      firstName: {
+        value: '',
+        errors: null
+      },
+      lastName: {
+        value: '',
+      },
+      phoneNumber: {
+        value: ''
+      },
+      email: {
+        value: ''
+      },
+      password: {
+        value: ''
+      },
+      confirmPassword: {
+        value: ''
+      }
+    }
   }
 
   onChange = (e, { name, value }) => {
-    switch(name) {
-      case 'firstName':
-      case 'lastName':
-      case 'phoneNumber':
-      case 'email':
-      case 'password':
-      case 'confirmPassword':
-        this.setState({[name]: value})
-      default: 
-        return
-    }
+    let { fields } = this.state
+    let field = fields[name]
+    if (field === undefined || field === null) return 
+    
+    fields[name] = {...fields, value, errors: null}
+    this.setState({fields})
   }
 
   onSubmit = () => {
-    const { 
-      firstName, lastName, phoneNumber, email, password, confirmPassword
-    } = this.state
+    const { fields } = this.state
+    
+    const user = Object.keys(fields).reduce((user, fieldName) => {
+      const { value } = fields[fieldName]
+      return {...user, [fieldName]: value}
+    }, {})
+    console.dir(user)
 
-    if (
-      firstName !== '' && 
-      lastName !== '' && 
-      email !== '' && 
-      password !== '' &&
-      password === confirmPassword
-    ) {
-      console.dir({firstName, lastName, email, password, confirmPassword})
+    if (this.isValidUser(user)) {
+      addUser(user)
+      console.dir(getUsers())
     } else {
-      console.log('ERRORS IN FORM')
+      console.log('Errors in form')
     }
   }
 
+  isValidUser(user) {
+    return user.firstName && user.firstName.length >= 1 &&
+            user.lastName && user.lastName.length >= 2 &&
+            user.email && this.isValidEmail(user.email) &&
+            user.phoneNumber && this.isValidPhoneNumber(user.phoneNumber) &&
+            this.hasValidPassword(user)
+  }
+
+  isValidEmail(email) {
+    return true
+  }
+
+  isValidPhoneNumber(phoneNumber) {
+    return true
+  }
+
+  hasValidPassword(user) {
+    const { password, confirmPassword } = user
+    return password && password.length >= 5 &&
+          confirmPassword === password
+  }
+
   render() {
+    const { fields } = this.state
+    const { 
+      firstName, lastName, email, phoneNumber, password, confirmPassword 
+    } = fields
     return (
       <Layout>
         <Header as='h2'>Signup!</Header>
         <Form>
           <Form.Group widths='2'>
-            <FormField
+            <Form.Field
               label='First name:'
               control={Input}
+              name='firstName'
+              value={firstName.value}
               onChange={this.onChange}
             />
-            <FormField 
+            <Form.Field 
               label='Last name:' 
               control={Input}
               name='lastName'
+              value={lastName.value}
               onChange={this.onChange} 
             />
           </Form.Group>
@@ -71,6 +110,7 @@ class Signup extends Component {
             control={Input} 
             type='tel'
             name='phoneNumber'
+            value={phoneNumber.value}
             onChange={this.onChange}
           />
           <Form.Field 
@@ -78,6 +118,7 @@ class Signup extends Component {
             control={Input}
             type='email'
             name='email'
+            value={email.value}
             onChange={this.onChange}
           />
           <Form.Field 
@@ -85,6 +126,7 @@ class Signup extends Component {
             control={Input}
             type='password' 
             name='password'
+            value={password.value}
             onChange={this.onChange}
           />
           <Form.Field 
@@ -92,10 +134,11 @@ class Signup extends Component {
             control={Input}
             type='password'
             name='confirmPassword'
+            value={confirmPassword.value}
             onChange={this.onChange}
           />
           <Form.Group inline>
-            <Form.Button content='Sign up!' color='blue'/>
+            <Form.Button content='Sign up!' color='blue' onClick={this.onSubmit}/>
             <Form.Button content='Cancel' color='black'/>
           </Form.Group>
         </Form>
