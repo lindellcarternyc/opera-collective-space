@@ -41,11 +41,25 @@ let schedule = [
   }
 ]
 
-export const getData = () => schedule
+export const getSchedule = () => {
+  return new Promise((resolve, reject) => {
+    resolve(schedule)
+  })
+}
 
-export const addConcert = ( concert ) => {
+export const getConcertById = (id) => {
+  return new Promise((resolve, reject) => {
+    if (id >= 0 && id < schedule.length) {
+      resolve(schedule[id])
+    } else {
+      reject('Invalid id: ' + id)
+    }
+  })
+}
+
+export const addToSchedule = (concert) => {
   return new Promise((resolve, reject) => {
     schedule = [...schedule, concert]
-    resolve('success')
+    resolve()
   })
 }
