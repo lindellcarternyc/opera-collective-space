@@ -1,13 +1,12 @@
 
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 
 import Router from 'next/router'
 
 import Layout from '../components/layout'
 import { Header, Form, Input } from 'semantic-ui-react'
 
-import { getUsers, addUser } from '../data/users'
+import { addUser } from '../data/users'
 
 class Signup extends Component {
   state = {
@@ -55,6 +54,7 @@ class Signup extends Component {
       addUser(user)
       Router.replace('/userlist')
     } else {
+      // eslint-disable-next-line no-console
       console.log('Errors in form')
     }
   }
@@ -68,11 +68,11 @@ class Signup extends Component {
   }
 
   isValidEmail(email) {
-    return true
+    return email && email.length >= 5
   }
 
   isValidPhoneNumber(phoneNumber) {
-    return true
+    return phoneNumber && phoneNumber.length === 10
   }
 
   hasValidPassword(user) {
@@ -146,9 +146,6 @@ class Signup extends Component {
       </Layout>
     )
   }
-}
-Signup.propTypes = {
-
 }
 
 export default Signup

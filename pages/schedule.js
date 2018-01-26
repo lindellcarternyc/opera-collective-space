@@ -44,5 +44,14 @@ Schedule.getInitialProps = async function() {
     schedule
   }
 }
+Schedule.propTypes = {
+  schedule: PropTypes.arrayOf(
+    PropTypes.shape({
+      date: PropTypes.string.isRequired,
+      time: PropTypes.string.isRequired,
+      location: PropTypes.string.isRequired
+    })
+  ).isRequired
+}
 
 export default Schedule

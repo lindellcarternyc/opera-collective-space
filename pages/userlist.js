@@ -22,7 +22,12 @@ Userlist.getInitialProps = async function() {
   return { users }
 }
 Userlist.propTypes = {
-
+  users: PropTypes.arrayOf(
+    PropTypes.shape({
+      firstName: PropTypes.string.isRequired,
+      lastName: PropTypes.string.isRequired
+    })
+  ).isRequired
 }
 
 export default Userlist
