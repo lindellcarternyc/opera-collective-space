@@ -43,7 +43,11 @@ let schedule = [
 
 export const getSchedule = () => {
   return new Promise((resolve, reject) => {
-    resolve(schedule)
+    if (schedule.length > 0) {
+      resolve(schedule)
+    } else {
+      reject('No Schedule')
+    }
   })
 }
 
@@ -60,6 +64,10 @@ export const getConcertById = (id) => {
 export const addToSchedule = (concert) => {
   return new Promise((resolve, reject) => {
     schedule = [...schedule, concert]
-    resolve()
+    if (schedule.length > 0) {
+      resolve()
+    } else {
+      reject('No Schedule')
+    }
   })
 }
