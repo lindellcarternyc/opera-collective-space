@@ -2,6 +2,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import Router from 'next/router'
+
 import Layout from '../components/layout'
 import { Header, Form, Input } from 'semantic-ui-react'
 
@@ -48,11 +50,10 @@ class Signup extends Component {
       const { value } = fields[fieldName]
       return {...user, [fieldName]: value}
     }, {})
-    console.dir(user)
 
     if (this.isValidUser(user)) {
       addUser(user)
-      console.dir(getUsers())
+      Router.replace('/userlist')
     } else {
       console.log('Errors in form')
     }
