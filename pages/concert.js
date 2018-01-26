@@ -1,3 +1,6 @@
+import React from 'react'
+import PropTypes from 'prop-types'
+
 import { Header } from 'semantic-ui-react'
 
 import Layout from '../components/layout'
@@ -16,6 +19,12 @@ const Concert = (props) => {
       <SingerList singers={singers}/>
     </Layout>
   )
+}
+Concert.propTypes = {
+  date: PropTypes.string.isRequired,
+  time: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  singers: PropTypes.string.isRequired
 }
 
 Concert.getInitialProps = async function (context) {

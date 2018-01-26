@@ -1,3 +1,5 @@
+import React from 'react'
+
 import Link from 'next/link'
 import { Header, Button } from 'semantic-ui-react'
 import Layout from '../components/layout'

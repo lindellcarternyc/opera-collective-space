@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+
 import Router from 'next/router'
 
 import {
@@ -12,7 +14,7 @@ import {
 
 import Layout from '../components/layout'
 
-import { addConcert, getData } from '../data/data'
+import { addConcert } from '../data/data'
 
 const DateInput = ( { handleChange } ) => (
   <Form.Field required>
@@ -26,6 +28,9 @@ const DateInput = ( { handleChange } ) => (
     />
   </Form.Field>
 )
+DateInput.propTypes = {
+  handleChange: PropTypes.func.isRequired
+}
 
 const LocationDropdown = ( { handleChange } ) => {
   const locations = [
@@ -56,6 +61,9 @@ const LocationDropdown = ( { handleChange } ) => {
     </Form.Field>
   )
 }
+LocationDropdown.propTypes = {
+  handleChange: PropTypes.func.isRequired
+}
 
 const TimeOptions = ( { handleChange, value } ) => {
   const onChange = (e, { value }) => { handleChange('time', value) }
@@ -82,6 +90,10 @@ const TimeOptions = ( { handleChange, value } ) => {
       </Form.Field>
     </Form.Group>
   )
+}
+TimeOptions.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+  value: PropTypes.oneOf(['6 - 9', '6 - 10']).isRequired
 }
 
 
@@ -110,7 +122,8 @@ class AddConcert extends Component {
         .then(() => { Router.replace('/schedule') })
         .catch(err => { throw err })
     } else {
-      console.log('not valid')
+      // eslint-disable-next-line no-console
+      console.log('Error: invalid form state')
     }
   }
 

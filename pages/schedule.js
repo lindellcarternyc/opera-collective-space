@@ -1,3 +1,6 @@
+import React from 'react'
+import PropTypes from 'prop-types'
+
 import Link from 'next/link'
 import { Header, List } from 'semantic-ui-react'
 import Layout from '../components/layout'
@@ -22,6 +25,12 @@ const ConcertLink = ({ id, date, time, location }) => {
       </List.Item>
     </Link>
   )
+}
+ConcertLink.propTypes = {
+  id: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  time: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired
 }
 
 const Schedule = () => (
