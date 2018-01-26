@@ -3,6 +3,3 @@ node_modules/
 
 # build
 .next/
-
-# scripts
-scripts/
