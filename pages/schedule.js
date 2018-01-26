@@ -5,16 +5,7 @@ import Link from 'next/link'
 import { Header, List } from 'semantic-ui-react'
 import Layout from '../components/layout'
 
-import { getData } from '../data/data'
-
-const getSchedule = () => {
-  return getData().map(d => {
-    const { date, time, location } =  d
-    return {
-      date, time, location
-    }
-  })
-}
+import { getSchedule } from '../data/schedule'
 
 const ConcertLink = ({ id, date, time, location }) => {
   return (
@@ -27,17 +18,17 @@ const ConcertLink = ({ id, date, time, location }) => {
   )
 }
 ConcertLink.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   date: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired
 }
 
-const Schedule = () => (
+const Schedule = ( { schedule } ) => (
   <Layout>
     <Header as='h1' content='Schedule'/>
     <List selection>
-      {getSchedule().map((concert, idx)=> (
+      {schedule.map((concert, idx)=> (
         <ConcertLink 
           key={concert.date} 
           id={idx} 
@@ -47,5 +38,11 @@ const Schedule = () => (
     </List>
   </Layout>
 )
+Schedule.getInitialProps = async function() {
+  const schedule = await getSchedule()
+  return {
+    schedule
+  }
+}
 
 export default Schedule

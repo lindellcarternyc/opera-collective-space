@@ -6,7 +6,7 @@ import { Header } from 'semantic-ui-react'
 import Layout from '../components/layout'
 import SingerList from '../components/singerlist'
 
-import { getData } from '../data/data'
+import { getConcertById } from '../data/schedule'
 
 const Concert = (props) => {
   const { date, time, location, singers } = props
@@ -24,18 +24,17 @@ Concert.propTypes = {
   date: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
-  singers: PropTypes.string.isRequired
+  singers: PropTypes.arrayOf(PropTypes.string)
 }
 
 Concert.getInitialProps = async function (context) {
   const { id } = context.query
-  const data = getData()[id]
+  try {
+    const concert = await getConcertById(id)
 
-  return {
-    date: data.date,
-    time: data.time,
-    location: data.location,
-    singers: data.singers
+    return {...concert}
+  } catch (e) {
+    throw e
   }
 }
 

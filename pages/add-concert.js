@@ -14,7 +14,7 @@ import {
 
 import Layout from '../components/layout'
 
-import { addConcert } from '../data/data'
+import { addToSchedule } from '../data/schedule'
 
 const DateInput = ( { handleChange } ) => (
   <Form.Field required>
@@ -118,7 +118,7 @@ class AddConcert extends Component {
   onSubmit = () => {
     const { date, location, time } = this.state
     if (date !== '' && location !== '') {
-      addConcert({date, location, time})
+      addToSchedule({date, location, time})
         .then(() => { Router.replace('/schedule') })
         .catch(err => { throw err })
     } else {
