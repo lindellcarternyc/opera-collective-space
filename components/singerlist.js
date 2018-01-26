@@ -1,13 +1,7 @@
-import { List, Header } from 'semantic-ui-react'
+import React from 'react'
+import PropTypes from 'prop-types'
 
-const getSingers = () => {
-  return [
-    'Lindell',
-    'Alexis',
-    'Jose',
-    'Jonathan'
-  ]
-}
+import { List, Header } from 'semantic-ui-react'
 
 const SingerList = ({ singers }) => (
   <div>
@@ -19,5 +13,8 @@ const SingerList = ({ singers }) => (
     </List>
   </div>
 )
+SingerList.propTypes = {
+  singers: PropTypes.arrayOf(PropTypes.string)
+}
 
 export default SingerList

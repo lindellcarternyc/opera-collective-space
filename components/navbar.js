@@ -1,3 +1,6 @@
+import React from 'react'
+import PropTypes from 'prop-types'
+
 import Link from 'next/link'
 import { Menu, Icon } from 'semantic-ui-react'
 
@@ -17,5 +20,8 @@ const Navbar = (props) => (
   </Link>
   </Menu>
 )
+Navbar.propTypes = {
+  toggleSideMenu: PropTypes.func.isRequired
+}
 
 export default Navbar

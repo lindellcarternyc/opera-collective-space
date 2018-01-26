@@ -1,14 +1,17 @@
+import React from 'react'
+import PropTypes from 'prop-types'
+
 import Link from 'next/link'
 import { Sidebar, Menu } from 'semantic-ui-react'
 
 
-const Sidenav = (props) => {
+const Sidenav = ( { visible } ) => {
   return (
     <div>
       <Sidebar 
         as={Menu} 
         animation='overlay' 
-        visible={props.visible}
+        visible={visible}
         vertical
         color='blue'
         inverted
@@ -26,6 +29,9 @@ const Sidenav = (props) => {
       </Sidebar>
     </div>
   )
+}
+Sidenav.propTypes = {
+  visible: PropTypes.bool.isRequired
 }
 
 export default Sidenav

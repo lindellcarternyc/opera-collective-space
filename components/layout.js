@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import Head from 'next/head'
-import { Container, Sidebar, Icon } from 'semantic-ui-react'
+import { Container, Sidebar } from 'semantic-ui-react'
 
 import Navbar from './navbar'
 import Sidenav from './sidenav'
@@ -47,6 +48,10 @@ class Layout extends Component {
       </div>
     )
   }
+}
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired
 }
 
 export default Layout
