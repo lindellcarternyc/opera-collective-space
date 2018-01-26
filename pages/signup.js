@@ -58,8 +58,7 @@ class Signup extends Component {
               label='First name:'
               control={Input}
               onChange={this.onChange}
-            >
-            </FormField>
+            />
             <FormField 
               label='Last name:' 
               control={Input}
