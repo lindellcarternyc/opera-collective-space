@@ -18,6 +18,9 @@ const Navbar = (props) => (
       Home
     </Menu.Item>
   </Link>
+  <Link href='/signup'>
+    <Menu.Item content='Signup' />
+  </Link>
   </Menu>
 )
 Navbar.propTypes = {

@@ -20,6 +20,9 @@ const Sidenav = ( { visible } ) => {
         <Link href='/'>
           <Menu.Item content='Home' />
         </Link>
+        <Link href='/signup'>
+          <Menu.Item content='Signup' />
+        </Link>
         <Link href='/schedule'>
           <Menu.Item content='Schedule' />
         </Link>
