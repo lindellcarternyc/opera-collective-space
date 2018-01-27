@@ -39,8 +39,10 @@ class Signin extends Component {
 
     this.authService.authenticate(email.value, password.value)
       .then(() => {
-        this.authService.login()
         Router.replace('/')
+      })
+      .catch(err => {
+        throw err
       })
   }
 
