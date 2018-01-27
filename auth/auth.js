@@ -14,7 +14,7 @@ class AuthService {
       .then(user => {
         if (user.password === password) {
           this.login()
-          resolve('success')
+          resolve(user)
         } else {
           reject('wrong password')
         }
