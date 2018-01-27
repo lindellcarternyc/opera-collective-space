@@ -8,7 +8,7 @@ import { Header, List } from 'semantic-ui-react'
 import { getUsers } from '../data/users'
 
 const Userlist = ( { users } ) => (
-  <Layout>
+  <Layout title='Users'>
     <Header as='h2'>Hello from Userlist!</Header>
     <List>
     {users.map(user => (

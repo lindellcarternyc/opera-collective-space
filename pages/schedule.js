@@ -25,7 +25,7 @@ ConcertLink.propTypes = {
 }
 
 const Schedule = ( { schedule } ) => (
-  <Layout>
+  <Layout title='Schedule'>
     <Header as='h1' content='Schedule'/>
     <List selection>
       {schedule.map((concert, idx)=> (

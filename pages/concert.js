@@ -11,7 +11,7 @@ import { getConcertById } from '../data/schedule'
 const Concert = (props) => {
   const { date, time, location, singers } = props
   return (
-    <Layout>
+    <Layout title='Concert'>
       <Header as='h2'>
         {date}
         <Header.Subheader content={time + ' @' + location } />

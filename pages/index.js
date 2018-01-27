@@ -6,7 +6,7 @@ import Layout from '../components/layout'
 
 const Index = () => (
   <div>
-    <Layout>
+    <Layout title='Home'>
       <Header 
         as='h1' 
         content='Opera Collective Space'

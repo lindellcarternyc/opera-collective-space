@@ -133,9 +133,9 @@ class AddConcert extends Component {
 
   render() {
     return (
-      <Layout onSubmit={this.onSubmit}>
+      <Layout title='Add Concert'>
         <Header as='h2' content='Add Concert' />
-        <Form>
+        <Form onSubmit={this.onSubmit}>
           <DateInput handleChange={this.onChange}/>
           <LocationDropdown handleChange={this.onChange}/>
           <TimeOptions handleChange={this.onChange} value={this.state.time} />

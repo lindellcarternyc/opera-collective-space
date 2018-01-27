@@ -87,7 +87,7 @@ class Signup extends Component {
       firstName, lastName, email, phoneNumber, password, confirmPassword 
     } = fields
     return (
-      <Layout>
+      <Layout title='Sign Up'>
         <Header as='h2'>Signup!</Header>
         <Form>
           <Form.Group widths='2'>

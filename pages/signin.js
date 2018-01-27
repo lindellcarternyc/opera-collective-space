@@ -54,7 +54,7 @@ class Signin extends Component {
     const { fields } = this.state
     const { email, password } = fields
     return (
-      <Layout>
+      <Layout title='Sign In'>
         <Header as='h2' content='Signin' />
         <Form>
           <Form.Field 

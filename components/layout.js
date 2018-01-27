@@ -16,6 +16,10 @@ const childrenStyle = {
 }
 
 class Layout extends Component {
+  static defaultProps = {
+    title: ''
+  }
+
   constructor(props) {
     super(props)
 
@@ -30,10 +34,13 @@ class Layout extends Component {
   }
 
   render() {
+    const title = 'OC SPACE | ' + this.props.title
     return (
       <div style={LayoutStyle}>
         <Head>
-          <title>Default title</title>
+          <title>{title}</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta charSet="utf-8" />
           <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css' />
         </Head>
         <Navbar toggleSideMenu={this.toggleSideMenu}/>
