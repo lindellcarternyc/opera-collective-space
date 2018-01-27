@@ -1,3 +1,5 @@
+import { getUserByEmail } from '../data/users'
+
 class AuthService {
   loggedIn = false
 
@@ -8,11 +10,19 @@ class AuthService {
 
   authenticate = (email, password) => {
     return new Promise((resolve, reject) => {
-      if (email === 'email' && password === 'password') {
-        resolve()
-      } else {
-        reject('Invalid email or password')
-      }
+      getUserByEmail(email)
+      .then(user => {
+        if (user.password === password) {
+          this.login()
+          resolve('success')
+        } else {
+          reject('wrong password')
+        }
+      })
+      .catch(err => {
+        const msg = 'Error getting users by email: ' + err.message
+        throw new Error(msg)
+      })
     })
   }
 }
