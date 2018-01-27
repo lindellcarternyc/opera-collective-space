@@ -2,14 +2,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import Link from 'next/link'
+
 import Layout from '../components/layout'
-import { Header } from 'semantic-ui-react'
+import { Header, Segment } from 'semantic-ui-react'
 
 import { getAdminById } from '../data/admin'
 
 const AdminDashboard = ( { admin } ) => (
   <Layout>
     <Header as='h2'>Welcome, {admin.firstName}!</Header>
+    <Link href='/add-concert'>
+      <Segment>
+        <Header as='h4' content='Add a concert' />
+      </Segment>
+    </Link>
   </Layout>
 )
 AdminDashboard.propTypes = {

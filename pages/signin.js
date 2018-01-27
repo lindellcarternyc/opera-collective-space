@@ -38,8 +38,15 @@ class Signin extends Component {
     const { email, password } = fields
 
     this.authService.authenticate(email.value, password.value)
-      .then(() => {
-        Router.replace('/')
+      .then((user) => {
+        if (user.admin === true) {
+          Router.replace({
+            pathname: '/admin-dashboard',
+            query: { id: user._id }
+          })
+        } else {
+          Router.replace('/')
+        }
       })
       .catch(err => {
         throw err
@@ -47,7 +54,7 @@ class Signin extends Component {
   }
 
   cancel = () => {
-
+    Router.replace('/')
   }
 
   render() {
