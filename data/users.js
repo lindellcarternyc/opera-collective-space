@@ -1,5 +1,6 @@
 let users = [
   {
+    _id: 0,
     firstName: 'Lindell',
     lastName: 'Carter',
     email: 'lindellcarternyc@gmail.com',
@@ -7,6 +8,7 @@ let users = [
     admin: true
   },
   {
+    _id: 1,
     firstName: 'Jose',
     lastName: 'Heredia',
     email: 'joseheredia@gmail.com',
