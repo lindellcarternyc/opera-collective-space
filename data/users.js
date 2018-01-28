@@ -18,7 +18,7 @@ let users = [
 
 ]
 
-export const getUsers = () => {
+const getUsers = () => {
   return new Promise((resolve, reject) => {
     if (users.length > 0) {
       resolve(users)
@@ -28,7 +28,7 @@ export const getUsers = () => {
   })
 }
 
-export const getUserByEmail = email => {
+const getUserByEmail = email => {
   return new Promise((resolve, reject) => {
       getUsers()
         .then(allUsers => {
@@ -46,6 +46,10 @@ export const getUserByEmail = email => {
   })
 }
 
-export const addUser = (user) => {
+const addUser = (user) => {
   users = [...users, user]
+}
+
+module.exports = {
+  getUsers, getUserByEmail, addUser
 }
