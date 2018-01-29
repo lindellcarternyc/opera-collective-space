@@ -8,7 +8,7 @@
     "dev": "next",
     "build": "next build",
     "export": "next export",
-    "start": "next start",
+    "start": "node server.js",
     "lint": "eslint",
     "create-component": "node ./scripts/create-component.js "
   },
@@ -16,6 +16,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.17.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
     "next": "^4.2.3",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
