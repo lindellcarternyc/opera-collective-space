@@ -2,11 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Link from 'next/link'
-import Router from 'next/router'
 
 import { Menu, Icon } from 'semantic-ui-react'
-
-import authService from '../auth/auth'
 
 const NavbarLink = ( { href, title } ) => (
   <Link href={href}>
@@ -19,17 +16,11 @@ NavbarLink.propTypes = {
 }
 
 const getRoutes = () => {
-  if (authService.isLoggedIn() === true) {
-    return [
-      {href: '/',       title: 'Home'}
-    ]
-  } else {
-    return [
-      {href: '/',       title: 'Home'},
-      {href: '/signup', title: 'Signup'},
-      {href: '/signin', title: 'Signin'}
-    ]
-  }
+  return [
+    {href: '/',       title: 'Home'},
+    {href: '/signup', title: 'Signup'},
+    {href: '/signin', title: 'Signin'}
+  ]
 }
 
 const Navbar = (props) => (
@@ -44,15 +35,6 @@ const Navbar = (props) => (
   {getRoutes().map(route => (
     <NavbarLink key={route.href} {...route}/>
   ))}
-  {authService.isLoggedIn() &&
-    <Menu.Item 
-      content='Sign out' 
-      onClick={() => {
-        authService.logout()
-        Router.replace('/')
-      }}
-    />
-  }
   </Menu>
 )
 Navbar.propTypes = {

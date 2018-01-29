@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+
 import Head from 'next/head'
 import { Container, Sidebar } from 'semantic-ui-react'
 
@@ -58,7 +59,8 @@ class Layout extends Component {
 }
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
+  title: PropTypes.string.isRequired
 }
 
 export default Layout
