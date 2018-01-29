@@ -1,14 +1,23 @@
-import { getUserByEmail } from '../data/users'
+const { getUserByEmail } = require('../data/users')
 
 class AuthService {
-  loggedIn = false
+  constructor() {
+    this.loggedIn = false
+  }
 
-  isLoggedIn = () => this.loggedIn
+  isLoggedIn() {
+    return this.loggedIn
+  }
 
-  login = () => { this.loggedIn = true }
-  logout = () => { this.loggedIn = false }
+  login() { 
+    this.loggedIn = true 
+  }
 
-  authenticate = (email, password) => {
+  logout() { 
+    this.loggedIn = false 
+  }
+
+  authenticate(email, password) {
     return new Promise((resolve, reject) => {
       getUserByEmail(email)
       .then(user => {
@@ -27,6 +36,4 @@ class AuthService {
   }
 }
 
-const authService = new AuthService()
-
-export default authService
+module.exports = () => new AuthService()
